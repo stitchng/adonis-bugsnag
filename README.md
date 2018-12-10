@@ -5,7 +5,7 @@ An addon/plugin package to provide BugSnag error reporting services in AdonisJS 
 ## Getting Started
 ```bash
 
-    npm i --save @stitchng/adonis-bugsnag
+    npm i --save @adonisjs/adonis-bugsnag
 
 ```
 
@@ -27,3 +27,6 @@ MIT
 ```
 
 ## Credits
+
+- Ifeora Okechukwu <Head Of Technology - Oparand>
+- Ahmad Aziz <Head - NodeJS Foundation>
