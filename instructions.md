@@ -21,7 +21,7 @@ const globalMiddleware = [
 
 ## Config
 
-The configuration is saved inside `config/busnag.js` file. Tweak it accordingly.
+The configuration is saved inside `config/bugsnag.js` file. Tweak it accordingly.
 
 ## Docs
 
