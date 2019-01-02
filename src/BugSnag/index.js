@@ -13,9 +13,9 @@ class BugSnagAPIClient {
 			apiKey: Config.get('bugsnag.apiKey')
 		}, usePlugins)
 
-    if(Config.get('busnag.trackViaSession') === true){
+	    	if(Config.get('busnag.trackViaSession') === true){
 		    this.notifier.startSession();
-    }
+	    	}
 	}
 
 	setAuthUser(user) {
@@ -36,9 +36,9 @@ class BugSnagAPIClient {
 				report.context = context || '[REDACTED]'
         
 				// Add additional diagnostic information
-        if(extraMetaData){
-				  report.updateMetaData('extra', extraMetaData)
-        }
+        			if(extraMetaData){
+				  	report.updateMetaData('extra', extraMetaData)
+        			}
 				
 				//report.removeMetaData('extra', '')
 			}
