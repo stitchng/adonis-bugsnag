@@ -6,8 +6,8 @@ class BugSnagProvider extends ServiceProvider {
   register () {
     this.app.singleton('Adonis/Addons/BugSnag', () => {
       const Config = this.app.use('Adonis/Src/Config')
-      const BugSnagHelper = require('../src/BugSnag')
-      return new BugSnagHelper(require('@bugsnag/js'), Config)
+      const BugSnag = require('../src/BugSnag')
+      return new BugSnag(require('@bugsnag/js'), Config)
     })
   }
 }
