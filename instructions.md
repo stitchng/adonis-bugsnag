@@ -1,0 +1,28 @@
+## Registering provider
+
+Like any other provider, you need to register the provider inside `start/app.js` file.
+
+```js
+const providers = [
+  '@adonisjs/bugsnag/providers/BugSnagProvider'
+]
+```
+
+## Registering middleware
+
+Register the following middleware inside `start/kernel.js` file.
+
+```js
+const globalMiddleware = [
+  ...
+  'Adonis/Middleware/BugSnag'
+]
+```
+
+## Config
+
+The configuration is saved inside `config/busnag.js` file. Tweak it accordingly.
+
+## Docs
+
+To find out more, read the docs [here](https://github.com/stitchng/adonis-bugsnag).
