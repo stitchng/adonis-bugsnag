@@ -5,6 +5,9 @@
   "main": "index.js",
   "files":[
     "src",
+    "config",
+    "providers",
+    "instructions.js"
     "index.js"
   ],
   "directories":{
@@ -41,5 +44,5 @@
   "bugs": {
     "url": "https://github.com/stitchng/adonis-bugsnag/issues"
   },
-  "homepage": "https://github.com/stitchng/adonis-bugsnag"
+  "homepage": "https://github.com/stitchng/adonis-bugsnag#readme"
 }
