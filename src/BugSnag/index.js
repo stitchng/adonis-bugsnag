@@ -2,7 +2,7 @@
 
 const Helpers = use('Helpers')
 const Env = use('Env')
-const pkg = require(Helpers.appRoot('/package.json'));
+const pkg = require(Helpers.appRoot('package.json'));
 
 class BugSnagAPIClient {
 	constructor(Notifier, Config) {
