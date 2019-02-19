@@ -1,7 +1,8 @@
 'use strict';
 
 const Helpers = use('Helpers')
-const pkg = require(Helpers.appRoot() + '/package.json');
+const Env = use('Env')
+const pkg = require(Helpers.appRoot('/package.json'));
 
 class BugSnagAPIClient {
 	constructor(Notifier, Config) {
@@ -10,6 +11,7 @@ class BugSnagAPIClient {
 		this.notifier = Notifier({
 			appVersion: pkg.version,
 			collectUserIp: true,
+			environment:Env.get('NODE_ENV'),
 			apiKey: Config.get('bugsnag.apiKey')
 		}, usePlugins)
 
@@ -27,6 +29,11 @@ class BugSnagAPIClient {
 	}
 
 	notify(error, request, context, extraMetaData) {
+		
+		if(request.user){
+			this.setAuthUser(request.user)
+		}
+		
 		this.notifier.notify(error, {
 			beforeSend: function (report) {
 				// Filter out sensitive information
