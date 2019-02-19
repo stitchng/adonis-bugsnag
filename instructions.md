@@ -15,7 +15,7 @@ Register the following middleware inside `start/kernel.js` file.
 ```js
 const globalMiddleware = [
   ...
-  'Adonis/Middleware/BugSnag'
+  'Adonis/Middleware/BugSnagUser'
 ]
 ```
 
