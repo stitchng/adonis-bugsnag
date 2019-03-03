@@ -7,8 +7,8 @@
     "src",
     "config",
     "providers",
-    "instructions.js"
-    "index.js"
+    "instructions.js",
+    "instructions.md"
   ],
   "directories":{
     "test":"test"
@@ -16,7 +16,9 @@
   "scripts": {
     "lint": "standard",
     "pretest": "npm run lint",
-    "test": "japa"
+    "test": "nyc node japaFile.js",
+    "test:win": "node ./node_modules/japa-cli/index.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
   },
   "keywords": [
     "errors",
@@ -29,16 +31,27 @@
   ],
   "author": "StitchNG <stitchnig@gmail.com> (https://twitter.com/stitchappn)",
   "license": "MIT",
+  "nyc": {
+    "exclude": [
+      "test"
+    ]
+  },
+  "standard": {
+    "globals": [
+      "use"
+    ]
+  },
   "dependencies": {
     "@adonisjs/generic-exceptions":"^2.0.1",
     "@bugsnag/js":"^5.0.1",
     "debug":"^3.1.2"
   },
   "devDependencies": {
-    "japa": "^2.0.6",
-    "japa-cli":"^2.0.0",
+    "japa": "^2.0.3",
+    "japa-cli":"^1.0.1",
+    "nyc": "^13.0.1",
     "semver":"^5.5.0",
-    "standard": "^10.0.3",
+    "standard": "^12.0.1",
     "@adonisjs/sink":"^1.0.6",
     "@adonisjs/fold": "^4.0.9"
   },
