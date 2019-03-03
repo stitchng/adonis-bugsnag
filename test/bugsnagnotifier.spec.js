@@ -10,20 +10,21 @@
 */
 
 const test = require('japa')
-const { ioc } = require('@adonisjs/fold')
-const { Config, Helpers } = require('@adonisjs/sink')
+const { Config, Helpers, Env } = require('@adonisjs/sink')
 const BugSnag = require('../src/index.js')
 
 let BugSnagJSNotifierStub = null
 
 
-test.group('Adonis BugSnag Test(s)', (group) => {
+test.group('AdonisJS BugSnag Test(s)', (group) => {
   group.beforeEach(() => {
     BugSnagJSNotifierStub = require('setup/notifier-stub')
     
     this.helpers = new Helpers(path.join(__dirname, '..'))
     this.config = new Config()
     this.env = new Env()
+    
+    setupResolver()
   })
   
   test('instantiate without errors or side-effects [yet]', () => {
