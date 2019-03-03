@@ -1,6 +1,5 @@
-
 module.exports = {
-  notify: function (err, options) {
+  notify: function () {
     this.notified = true
   },
   startSession: function () {

@@ -23,11 +23,10 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     this.config = new Config()
     this.env = new Env()
 
-    setupResolver()
   })
 
   test('instantiate without errors or side-effects [yet]', () => {
-    this.config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.get('bugsnag.trackViaSession', false)
     this.env.set('NODE_ENV', 'development')
 
@@ -40,7 +39,7 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
   })
 
   test('user property on [inert] notifier is set', () => {
-    this.config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.get('bugsnag.trackViaSession', false)
     this.env.set('NODE_ENV', 'development')
 
@@ -51,12 +50,14 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
   })
 
   test('session is started on config [trackViaSession] set to true', () => {
-    this.config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.get('bugsnag.trackViaSession', true)
     this.env.set('NODE_ENV', 'development')
 
     const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
+    AdonisBugSnagNotifierInstance.notify()
 
     assert.isTrue(BugSnagJSNotifierStub.sessionStarted)
+    assert.isTrue(BugSnagJSNotifierStub.notified)
   })
 })

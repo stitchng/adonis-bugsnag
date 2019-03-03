@@ -15,9 +15,9 @@ class BugSnagAPIClient {
       otherOptions: {}
     }, usePlugins)
 
-	    	if (Config.get('bugsnag.trackViaSession') === true) {
-		    this.notifier.startSession()
-	    	}
+    if (Config.get('bugsnag.trackViaSession') === true) {
+      this.notifier.startSession()
+    }
   }
 
   setAuthUser (user) {
@@ -49,10 +49,10 @@ class BugSnagAPIClient {
         report.request.url = request.url() || '[REDACTED]'
 
         // Add additional diagnostic information
-        			if (extraMetaData) {
+        if (extraMetaData) {
           // report.removeMetaData('extra', '')
-				  	report.updateMetaData('extra', extraMetaData)
-        			}
+          report.updateMetaData('extra', extraMetaData)
+        }
       }
     })
   }
