@@ -14,7 +14,7 @@ class BugSnagAPIClient {
 			apiKey: Config.get('bugsnag.apiKey')
 		}, usePlugins)
 
-	    	if(Config.get('busnag.trackViaSession') === true){
+	    	if(Config.get('bugsnag.trackViaSession') === true){
 		    this.notifier.startSession();
 	    	}
 	}
