@@ -14,14 +14,18 @@
     "test":"test"
   },
   "scripts": {
-    "test": "node test/provider.spec.js"
+    "lint": "standard",
+    "pretest": "npm run lint",
+    "test": "japa"
   },
   "keywords": [
     "errors",
     "reporting",
     "API",
     "adonis",
-    "bugsnag"
+    "bugsnag",
+    "adonisjs",
+    "adonis-framework"
   ],
   "author": "StitchNG <stitchnig@gmail.com> (https://twitter.com/stitchappn)",
   "license": "MIT",
@@ -34,6 +38,7 @@
     "japa": "^2.0.6",
     "japa-cli":"^2.0.0",
     "semver":"^5.5.0",
+    "standard": "^10.0.3",
     "@adonisjs/sink":"^1.0.6",
     "@adonisjs/fold": "^4.0.9"
   },
