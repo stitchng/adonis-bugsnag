@@ -1,6 +1,10 @@
 'use strict'
 
 class BugSnagUser {
+  
+    constructor(Config){
+      this.appSecret = Config.get('app.appKey')
+    }
 
     async handle ({ request, auth }, next){
           
