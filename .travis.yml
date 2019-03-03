@@ -1,13 +1,20 @@
 language: node_js
+
 node_js:
   - node
   - 8.4.0
   - 9.0.0
   - 10.0.0
+  
 sudo: false
+
 install:
   - npm install
+  
 after_script:
-- npm run coverage
+  - npm run tests
+  - npm run coverage
+
 notifications:
-  email:
+  email: 
+    - stitchnig@gmail.com
