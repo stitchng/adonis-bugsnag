@@ -10,11 +10,15 @@
 */
 
 const test = require('japa')
-const { setupResolver } = require('@adonisjs/sink')
+const { ioc, setupResolver } = require('@adonisjs/sink')
 const { resolver } = require('@adonisjs/fold')
 
-test.group('AdonisJS BugSnag Test(s)', (group) => {
+test.group('AdonisJS BugSnag Provider Test(s)', (group) => {
   group.before(() => {
-    setupResolver()
+      setupResolver()
+  })
+  
+  test('is BugSnag Provider resolvable', () => {
+      assert.isTrue(true)
   })
 })
