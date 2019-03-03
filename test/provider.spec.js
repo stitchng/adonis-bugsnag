@@ -11,7 +11,7 @@
 
 const test = require('japa')
 const { setupResolver } = require('@adonisjs/sink')
-//const { resolver } = require('@adonisjs/fold')
+// const { resolver } = require('@adonisjs/fold')
 
 test.group('AdonisJS BugSnag Provider Test(s)', (group) => {
   group.before(() => {

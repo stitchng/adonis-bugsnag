@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
 */
 
+const path = require('path')
 const test = require('japa')
 const { Config, Helpers, Env } = require('@adonisjs/sink')
 const BugSnag = require('../src/index.js')
@@ -22,7 +23,6 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     this.helpers = new Helpers(path.join(__dirname, '..'))
     this.config = new Config()
     this.env = new Env()
-
   })
 
   test('instantiate without errors or side-effects [yet]', () => {
