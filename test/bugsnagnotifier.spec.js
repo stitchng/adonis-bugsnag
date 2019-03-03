@@ -13,19 +13,30 @@ const test = require('japa')
 const { ioc } = require('@adonisjs/fold')
 const { Config, Helpers } = require('@adonisjs/sink')
 const BugSnag = require('../src/index.js')
-const BugSnagJSNotifierStub = require('setup/notifier-stub.js')
+
+let BugSnagJSNotifierStub = null
 
 
 test.group('Adonis BugSnag Test(s)', (group) => {
   group.beforeEach(() => {
+    BugSnagJSNotifierStub = require('setup/notifier-stub')
+    
     this.helpers = new Helpers(path.join(__dirname, './'))
     this.config = new Config()
     this.env = new Env()
   })
   
-  test('instantiate without errors or side-effects', () => {
-    const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
+  test('instantiate without errors or side-effects [yet]', () => {
+      this.config.set('bugsnag.apiKey', '');
+      this.config.get('bugsnag.track', false);
+      this.env.set('NODE_ENV', 'development');
+    
+      const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
 
-    //assert.
+      assert.isTrue(AdonisBugSnagNotifierInstance.notifier !== null)
+  })
+  
+  test('user property on [inert] notifier is set', () => {
+  
   })
 })
