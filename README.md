@@ -19,7 +19,7 @@ An addon/plugin package to provide BugSnag error reporting services in AdonisJS 
 ```js
 
 const BaseExceptionHandler = use('BaseExceptionHandler')
-const BugSnag = use('BugSnag')
+const bugsnag = use('BugSnag')
 
 /**
  * This class handles all exceptions thrown during
