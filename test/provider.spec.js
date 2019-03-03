@@ -15,10 +15,10 @@ const { resolver } = require('@adonisjs/fold')
 
 test.group('AdonisJS BugSnag Provider Test(s)', (group) => {
   group.before(() => {
-      setupResolver()
+    setupResolver()
   })
-  
+
   test('is BugSnag Provider resolvable', () => {
-      assert.isTrue(true)
+    assert.isTrue(true)
   })
 })

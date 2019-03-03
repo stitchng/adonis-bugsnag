@@ -9,13 +9,13 @@ class BugSnagProvider extends ServiceProvider {
       const Helpers = this.app.use('Helpers')
       const Env = this.app.use('Env')
       const BugSnag = require('../src/BugSnag')
-      
+
       return new BugSnag(require('@bugsnag/js'), Config, Helpers, Env)
     })
-    
+
     this.app.bind('Adonis/Middleware/BugSnagUser', (app) => {
-        let BugSnagUser = require('../src/BugSnag/Middleware/BugSnagUser')
-        return new BugSnagUser(app.use('Adonis/Src/Config'))
+      let BugSnagUser = require('../src/BugSnag/Middleware/BugSnagUser')
+      return new BugSnagUser(app.use('Adonis/Src/Config'))
     })
   }
 }

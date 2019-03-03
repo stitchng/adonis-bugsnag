@@ -3,15 +3,15 @@
   "version": "0.1.1",
   "description": "BugSnag addon/plugin package for AdonisJS 4.0+ apps",
   "main": "index.js",
-  "files":[
+  "files": [
     "src",
     "config",
     "providers",
     "instructions.js",
     "instructions.md"
   ],
-  "directories":{
-    "test":"test"
+  "directories": {
+    "test": "test"
   },
   "scripts": {
     "lint": "standard",
@@ -38,22 +38,24 @@
   },
   "standard": {
     "globals": [
-      "use"
+      "use",
+      "assert",
+      "test"
     ]
   },
   "dependencies": {
-    "@adonisjs/generic-exceptions":"^2.0.1",
-    "@bugsnag/js":"^5.0.1",
-    "debug":"^3.1.2"
+    "@adonisjs/generic-exceptions": "^2.0.1",
+    "@bugsnag/js": "^5.0.1",
+    "debug": "^3.1.2"
   },
   "devDependencies": {
     "japa": "^2.0.3",
-    "japa-cli":"^1.0.1",
+    "japa-cli": "^1.0.1",
     "nyc": "^13.0.1",
-    "semver":"^5.5.0",
+    "semver": "^5.5.0",
     "coveralls": "^3.0.2",
     "standard": "^12.0.1",
-    "@adonisjs/sink":"^1.0.6",
+    "@adonisjs/sink": "^1.0.6",
     "@adonisjs/fold": "^4.0.9"
   },
   "repository": {

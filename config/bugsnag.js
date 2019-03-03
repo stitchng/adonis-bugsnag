@@ -14,7 +14,7 @@ module.exports = {
    |
    */
   apiKey: Env.get('BUGSNAG_API_KEY'),
-  
+
   /*
    |---------------------------------------------------------------------------
    | Track Using Session
@@ -25,6 +25,6 @@ module.exports = {
    |
    |
    */
-   trackViaSession: false
+  trackViaSession: false
 
 }
