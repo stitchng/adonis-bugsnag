@@ -12,7 +12,6 @@ install:
   - npm install
   
 after_script:
-  - npm run tests
   - npm run coverage
 
 notifications:
