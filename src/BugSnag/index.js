@@ -1,12 +1,12 @@
 'use strict';
 
-const Helpers = use('Helpers')
-const Env = use('Env')
-const pkg = require(Helpers.appRoot('package.json'));
+
+const getPkgJSON = (helpers) => require(helpers.appRoot('package.json'))
 
 class BugSnagAPIClient {
-	constructor(Notifier, Config) {
+	constructor(Notifier, Config, Helpers, Env) {
 		let usePlugins = [];
+		let pkg = getPkgJSON()
     
 		this.notifier = Notifier({
 			appVersion: pkg.version,
