@@ -102,16 +102,19 @@ MIT
 
 ```bash
 
+	npm run lint
     npm run test
 
 ```
 
 ## Credits
 
-- Ifeora Okechukwu <Head Of Technology - Oparand> (https://twitter.com/isocroft)
-- Ahmad Aziz <Head - NodeJS Foundation> (https://instagram.com/dev_amaz)
+- [Ifeora Okechukwu <Head Of Technology - Oparand>](https://twitter.com/isocroft)
+- [Ahmad Aziz <Head - NodeJS Foundation>](https://instagram.com/dev_amaz)
     
 ## Contributing
+
+See the [CONTRIBUTING.md](https://github.com/stitchng/adonisjs-bugsnag/blob/master/CONTRIBUTING.md) file for info
 
 [npm-image]: https://img.shields.io/npm/v/adonisjs-bugsnag.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/adonisjs-bugsnag

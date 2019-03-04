@@ -13,7 +13,8 @@ const providers = [
 Register the following middleware inside `start/kernel.js` file.
 
 ```js
-const globalMiddleware = [
+const serverMiddleware = [
+  'Adonis/Middleware/Static',
   ...
   'Adonis/Middleware/BugSnagUser'
 ]
