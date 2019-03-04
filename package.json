@@ -39,7 +39,6 @@
   "standard": {
     "globals": [
       "use",
-      "assert",
       "test"
     ]
   },

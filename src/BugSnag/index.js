@@ -26,7 +26,7 @@ class BugSnagAPIClient {
 
   setContext (request) {
     this.notifier.context = {
-      routeName: typeof request.currentRoute === 'function' ? request.currentRoute() : { middleware: null }
+      routeName: typeof request.currentRoute === 'function' ? request.currentRoute() : { middleware: [], verb: [] }
     }
   }
 

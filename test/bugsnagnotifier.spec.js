@@ -49,15 +49,23 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.user, { id: 1, name: 'Heyyo!', email: 'xyz@abc.com' })
   })
 
-  test('session is started on config [trackViaSession] set to true', (assert) => {
+  test('error is dispacthed and session is started on config [trackViaSession] set to true', (assert) => {
     this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.set('bugsnag.trackViaSession', true)
     this.env.set('NODE_ENV', 'development')
 
+    const request = {
+      url: () => 'https://127.0.0.1:333/dashboard/user',
+      cookie: () => {},
+      user: null
+    }
+
     const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
-    AdonisBugSnagNotifierInstance.notify()
+    AdonisBugSnagNotifierInstance.notify(new Error(), request)
 
     assert.isTrue(BugSnagJSNotifierStub.sessionStarted)
     assert.isTrue(BugSnagJSNotifierStub.notified)
+    assert.isTrue(!!BugSnagJSNotifierStub.report)
+    assert.deepEqual(BugSnagJSNotifierStub.report.request, { url: 'https://127.0.0.1:333/dashboard/user' })
   })
 })
