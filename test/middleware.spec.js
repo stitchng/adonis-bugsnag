@@ -27,10 +27,9 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
 
     const auth = {
       getUser: async () => {
-         return Promise.resolve({id:1, full_name:'abc efg'})
+        return Promise.resolve({ id: 1, full_name: 'abc efg' })
       }
     }
-
 
     const context = { request, auth }
     const middleware = new BugSnagMiddleware(new Config())
@@ -40,8 +39,8 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
         return true
       })
       .then(() => {
-          assert.isTrue(!!request.user)
-          assert.equal(request.user.id, 1)
+        assert.isTrue(!!request.user)
+        assert.equal(request.user.id, 1)
       })
   })
 })
