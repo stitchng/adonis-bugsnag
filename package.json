@@ -59,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stitchng/adonisjs-bugsnag.git"
+    "url": "https://github.com/stitchng/adonis-bugsnag.git"
   },
   "bugs": {
-    "url": "https://github.com/stitchng/adonisjs-bugsnag/issues"
+    "url": "https://github.com/stitchng/adonis-bugsnag/issues"
   },
-  "homepage": "https://github.com/stitchng/adonisjs-bugsnag#readme"
+  "homepage": "https://github.com/stitchng/adonis-bugsnag#readme"
 }
