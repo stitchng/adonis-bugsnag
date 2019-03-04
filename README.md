@@ -114,7 +114,7 @@ MIT
     
 ## Contributing
 
-See the [CONTRIBUTING.md](https://github.com/stitchng/adonisjs-bugsnag/blob/master/CONTRIBUTING.md) file for info
+See the [CONTRIBUTING.md](https://github.com/stitchng/adonis-bugsnag/blob/master/CONTRIBUTING.md) file for info
 
 [npm-image]: https://img.shields.io/npm/v/adonisjs-bugsnag.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/adonisjs-bugsnag
