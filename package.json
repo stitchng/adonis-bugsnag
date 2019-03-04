@@ -1,5 +1,5 @@
 {
-  "name": "@adonisjs/adonis-bugsnag",
+  "name": "@adonisjs/bugsnag",
   "version": "0.1.1",
   "description": "BugSnag addon/plugin package for AdonisJS 4.0+ apps",
   "main": "index.js",
