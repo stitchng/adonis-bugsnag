@@ -63,9 +63,9 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
     AdonisBugSnagNotifierInstance.notify(new Error(), request)
 
-    assert.isTrue(BugSnagJSNotifierStub.sessionStarted)
-    assert.isTrue(BugSnagJSNotifierStub.notified)
-    assert.isTrue(!!BugSnagJSNotifierStub.report)
-    assert.deepEqual(BugSnagJSNotifierStub.report.request, { url: 'https://127.0.0.1:333/dashboard/user' })
+    assert.isTrue(AdonisBugSnagNotifierInstance.notifier.sessionStarted)
+    assert.isTrue(AdonisBugSnagNotifierInstance.notifier.notified)
+    assert.isTrue(!!AdonisBugSnagNotifierInstance.notifier.report)
+    assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.report.request, { url: 'https://127.0.0.1:333/dashboard/user' })
   })
 })
