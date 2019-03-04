@@ -14,7 +14,7 @@ An addon/plugin package to provide BugSnag error reporting services in AdonisJS 
 
 ```bash
 
-    $ npm i --save @adonisjs/adonis-bugsnag
+    $ npm i --save adonisjs-bugsnag
     
     $ adonis make:ehandler
 
@@ -113,8 +113,8 @@ MIT
     
 ## Contributing
 
-[npm-image]: https://img.shields.io/npm/v/@adonisjs/adonis-bugsnag.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@adonisjs/adonis-bugsnag
+[npm-image]: https://img.shields.io/npm/v/adonisjs-bugsnag.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/adonisjs-bugsnag
 
 [travis-image]: https://img.shields.io/travis/stitchng/adonis-bugsnag/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/stitchng/adonis-bugsnag

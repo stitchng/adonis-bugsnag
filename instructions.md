@@ -4,7 +4,7 @@ Like any other provider, you need to register the provider inside `start/app.js`
 
 ```js
 const providers = [
-  '@adonisjs/adonis-bugsnag/providers/BugSnagProvider'
+  'adonisjs-bugsnag/providers/BugSnagProvider'
 ]
 ```
 
