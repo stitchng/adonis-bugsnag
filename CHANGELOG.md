@@ -1,3 +1,9 @@
+<a name="0.1.5"></a>
+# 0.1.5 (2019-03-05)
+
+- Updated missing code
+- Added CONTRIBUTING.md file
+
 <a name="0.1.4"></a>
 # 0.1.4 (2019-03-04)
 
