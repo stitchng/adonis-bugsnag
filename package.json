@@ -49,14 +49,14 @@
     "debug": "^3.1.2"
   },
   "devDependencies": {
-    "japa": "^2.0.3",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/sink": "^1.0.6",
+    "coveralls": "^3.0.2",
+    "japa": "^2.0.5",
     "japa-cli": "^1.0.1",
     "nyc": "^13.0.1",
     "semver": "^5.5.0",
-    "coveralls": "^3.0.2",
-    "standard": "^12.0.1",
-    "@adonisjs/sink": "^1.0.6",
-    "@adonisjs/fold": "^4.0.9"
+    "standard": "^12.0.1"
   },
   "repository": {
     "type": "git",
