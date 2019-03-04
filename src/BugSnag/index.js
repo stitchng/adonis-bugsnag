@@ -1,6 +1,6 @@
 'use strict'
 
-const getPkgJSON = (helpers) => require(helpers.appRoot('package.json'))
+const getPkgJSON = (helpers) => require(`${helpers.appRoot()}/package.json`)
 
 class BugSnagAPIClient {
   constructor (Notifier, Config, Helpers, Env) {

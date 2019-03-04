@@ -25,7 +25,7 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     this.env = new Env()
   })
 
-  test('instantiate without errors or side-effects [yet]', () => {
+  test('instantiate without errors or side-effects [yet]', (assert) => {
     this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.set('bugsnag.trackViaSession', false)
     this.env.set('NODE_ENV', 'development')
@@ -38,7 +38,7 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     assert.isTrue(AdonisBugSnagNotifierInstance.notifier !== null)
   })
 
-  test('user property on [inert] notifier is set', () => {
+  test('user property on [inert] notifier is set', (assert) => {
     this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.set('bugsnag.trackViaSession', false)
     this.env.set('NODE_ENV', 'development')
@@ -49,7 +49,7 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.user, { id: 1, name: 'Heyyo!', email: 'xyz@abc.com' })
   })
 
-  test('session is started on config [trackViaSession] set to true', () => {
+  test('session is started on config [trackViaSession] set to true', (assert) => {
     this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
     this.config.set('bugsnag.trackViaSession', true)
     this.env.set('NODE_ENV', 'development')
