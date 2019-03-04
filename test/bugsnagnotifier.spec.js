@@ -12,7 +12,7 @@
 const path = require('path')
 const test = require('japa')
 const { Config, Helpers, Env } = require('@adonisjs/sink')
-const BugSnag = require('../src/index.js')
+const BugSnag = require('../src/BugSnag/index.js')
 
 let BugSnagJSNotifierStub = null
 
