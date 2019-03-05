@@ -4,7 +4,7 @@ Like any other provider, you need to register the provider inside `start/app.js`
 
 ```js
 const providers = [
-  '@adonisjs/adonis-bugsnag/providers/BugSnagProvider'
+  'adonisjs-bugsnag/providers/BugSnagProvider'
 ]
 ```
 
@@ -13,7 +13,8 @@ const providers = [
 Register the following middleware inside `start/kernel.js` file.
 
 ```js
-const globalMiddleware = [
+const serverMiddleware = [
+  'Adonis/Middleware/Static',
   ...
   'Adonis/Middleware/BugSnagUser'
 ]

@@ -10,11 +10,11 @@ An addon/plugin package to provide BugSnag error reporting services in AdonisJS 
 
 ## Getting Started
 
->Install from the NPM Registry
+>Install from the NPM Registry using the Adonis command so that all post-install instructions are run
 
 ```bash
 
-    $ npm i --save @adonisjs/adonis-bugsnag
+    $ adonis install adonisjs-bugsnag
     
     $ adonis make:ehandler
 
@@ -102,19 +102,23 @@ MIT
 
 ```bash
 
+	npm run lint
+
     npm run test
 
 ```
 
 ## Credits
 
-- Ifeora Okechukwu <Head Of Technology - Oparand> (https://twitter.com/isocroft)
-- Ahmad Aziz <Head - NodeJS Foundation> (https://instagram.com/dev_amaz)
+- [Ifeora Okechukwu <Head Of Technology - Oparand>](https://twitter.com/isocroft)
+- [Ahmad Aziz <Head - NodeJS Foundation>](https://instagram.com/dev_amaz)
     
 ## Contributing
 
-[npm-image]: https://img.shields.io/npm/v/@adonisjs/adonis-bugsnag.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@adonisjs/adonis-bugsnag
+See the [CONTRIBUTING.md](https://github.com/stitchng/adonis-bugsnag/blob/master/CONTRIBUTING.md) file for info
+
+[npm-image]: https://img.shields.io/npm/v/adonisjs-bugsnag.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/adonisjs-bugsnag
 
 [travis-image]: https://img.shields.io/travis/stitchng/adonis-bugsnag/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/stitchng/adonis-bugsnag
