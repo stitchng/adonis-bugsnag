@@ -10,11 +10,11 @@ An addon/plugin package to provide BugSnag error reporting services in AdonisJS 
 
 ## Getting Started
 
->Install from the NPM Registry
+>Install from the NPM Registry using the Adonis command so that all post-install instructions are run
 
 ```bash
 
-    $ npm i --save adonisjs-bugsnag
+    $ adonis install adonisjs-bugsnag
     
     $ adonis make:ehandler
 
@@ -103,6 +103,7 @@ MIT
 ```bash
 
 	npm run lint
+
     npm run test
 
 ```
