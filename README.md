@@ -72,6 +72,7 @@ class ExceptionHandler extends BaseExceptionHandler {
 		let metaData = {
 			headers: request.headers(),
 			format: request.format(),
+      body: request.body,
 			method: request.method().toLowerCase()
 		};
 
