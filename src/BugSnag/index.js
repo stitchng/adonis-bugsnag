@@ -20,25 +20,27 @@ class BugSnagAPIClient {
     }
   }
 
-  setAuthUser (user) {
+  setAuthUser (user = null) {
     this.notifier.user = user
   }
 
-  setContext (request) {
+  setContext (request = {}, session = {}) {
     this.notifier.context = {
-      routeName: typeof request.currentRoute === 'function' ? request.currentRoute() : { middleware: [], verb: [] }
+      route: typeof request.currentRoute === 'function' ? request.currentRoute() : {},
+      cookies: typeof request.cookies === 'function' ? request.cookies() : {},
+      session: typeof session.all === 'function' ? session.all() : {}
     }
   }
 
-  addMetaData (metaData) {
+  addMetaData (metaData = {}) {
     this.notifier.metaData = metaData
   }
 
-  notify (error, request, metaData, extraMetaData) {
-    if (request.user) {
-      this.setAuthUser(request.user)
-    }
+  setDevice (device = {}) {
+    this.notifier.device = device
+  }
 
+  notify (error, request, metaData, extraMetaData) {
     if (metaData) {
       this.addMetaData(metaData)
     }

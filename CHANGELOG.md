@@ -1,3 +1,10 @@
+<a name="0.2.0"></a>
+# 0.2.0 (2019-03-12)
+
+- Fixed Error (Session is not instatiated)
+- Changed middleware type/category to **Global Middleware**
+- Updated dependency `@bugsnag/js` from _5.0.1_ to _6.0.0_ in the package.json file
+
 <a name="0.1.5"></a>
 # 0.1.5 (2019-03-05)
 

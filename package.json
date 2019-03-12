@@ -1,6 +1,6 @@
 {
   "name": "adonisjs-bugsnag",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "BugSnag addon/plugin package for AdonisJS 4.0+ apps",
   "main": "index.js",
   "files": [
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@adonisjs/generic-exceptions": "^2.0.1",
-    "@bugsnag/js": "^5.0.1",
+    "@bugsnag/js": "^6.0.0",
     "debug": "^3.1.2"
   },
   "devDependencies": {
