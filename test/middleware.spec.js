@@ -11,7 +11,7 @@
 
 const test = require('japa')
 const path = require('path')
-const { Config, Env, Helpers  } = require('@adonisjs/sink')
+const { Config, Env, Helpers } = require('@adonisjs/sink')
 const { ioc } = require('@adonisjs/fold')
 const NotifierStub = require('./setup/notifier-stub.js')
 const BugSnagMiddleware = require('../src/BugSnag/Middleware/BugSnagUser.js')
@@ -36,17 +36,16 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
       let helpers = new Helpers(path.join(__dirname, '..'))
       return helpers
     })
-    
   })
 
   test('setup the request user upon handling', async (assert) => {
     const request = {
       url: () => 'https://127.0.0.1:333/dashboard/user',
-      cookies: () => {_gd1:'opened'}
+      cookies: () => ({ _gd1: 'opened' })
     }
-    
+
     const session = {
-      all: () => {adonis_auth:'1'}
+      all: () => ({ adonis_auth: '1' })
     }
 
     const auth = {
@@ -67,7 +66,7 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
         assert.isTrue(!!bugsnag.notifier.user)
         assert.isTrue(!!bugsnag.notifier.context)
         assert.isTrue(!!bugsnag.notifier.context.session)
-        assert.deepEqual(bugsnag.notifier.context.cookies, {_gd1:'opened'})
+        assert.deepEqual(bugsnag.notifier.context.cookies, { _gd1: 'opened' })
         assert.equal(bugsnag.notifier.user.id, 1)
       })
   })

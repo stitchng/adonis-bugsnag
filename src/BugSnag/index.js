@@ -35,13 +35,12 @@ class BugSnagAPIClient {
   addMetaData (metaData = {}) {
     this.notifier.metaData = metaData
   }
-  
+
   setDevice (device = {}) {
     this.notifier.device = device
   }
 
   notify (error, request, metaData, extraMetaData) {
-
     if (metaData) {
       this.addMetaData(metaData)
     }

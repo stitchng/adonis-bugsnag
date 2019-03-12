@@ -6,18 +6,17 @@ class BugSnagUser {
   }
 
   async handle ({ request, session, auth }, next) {
-    
-    try{
+    try {
       let _user = await (typeof (auth.getUser) === 'function' ? auth.getUser() : Promise.resolve(null))
 
       this.notifierWrapper.setAuthUser(_user)
       this.notifierWrapper.setContext(request, session)
-    }catch(err){
+    } catch (err) {
       ;
     }
 
     await next()
-    
+
     // this.notifierWrapper.leaveBreadcrumb('"name"', '{metaData}', '"type"', 'timestamp')
   }
 }
