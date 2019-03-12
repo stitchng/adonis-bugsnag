@@ -33,6 +33,8 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
 
     assert.isTrue(typeof AdonisBugSnagNotifierInstance.setAuthUser === 'function')
+    assert.isTrue(typeof AdonisBugSnagNotifierInstance.setContext === 'function')
+    assert.isTrue(typeof AdonisBugSnagNotifierInstance.setDevice === 'function')
     assert.isTrue(typeof AdonisBugSnagNotifierInstance.addMetaData === 'function')
     assert.isTrue(typeof AdonisBugSnagNotifierInstance.notify === 'function')
     assert.isTrue(AdonisBugSnagNotifierInstance.notifier !== null)
@@ -67,5 +69,29 @@ test.group('AdonisJS BugSnag Test(s)', (group) => {
     assert.isTrue(AdonisBugSnagNotifierInstance.notifier.notified)
     assert.isTrue(!!AdonisBugSnagNotifierInstance.notifier.report)
     assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.report.request, { url: 'https://127.0.0.1:333/dashboard/user' })
+  })
+
+  test('device and context method works as expected', (assert) => {
+    this.config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
+    this.config.set('bugsnag.trackViaSession', false)
+    this.env.set('NODE_ENV', 'development')
+
+    const request = {
+      url: () => 'https://127.0.0.1:333/dashboard/user',
+      cookies: () => ({ oid: 11 }),
+      user: null
+    }
+
+    const session = {
+      all: () => ({ locked: 0 })
+    }
+
+    const AdonisBugSnagNotifierInstance = new BugSnag(BugSnagJSNotifierStub, this.config, this.helpers, this.env)
+    AdonisBugSnagNotifierInstance.setContext(request, session)
+    AdonisBugSnagNotifierInstance.setDevice({ os: 'Linux Darwin' })
+
+    assert.isTrue(!!AdonisBugSnagNotifierInstance.notifier.context)
+    assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.context.session, { locked: 0 })
+    assert.deepEqual(AdonisBugSnagNotifierInstance.notifier.device, { os: 'Linux Darwin' })
   })
 })

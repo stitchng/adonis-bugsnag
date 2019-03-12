@@ -17,7 +17,7 @@ class BugSnagProvider extends ServiceProvider {
 
     this.app.bind('Adonis/Middleware/BugSnagUser', (app) => {
       let BugSnagUser = require('../src/BugSnag/Middleware/BugSnagUser')
-      return new BugSnagUser(app.use('Adonis/Addons/BugSnag'))
+      return new BugSnagUser(this.app.use('Adonis/Addons/BugSnag'))
     })
   }
 }
