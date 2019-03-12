@@ -10,12 +10,12 @@ const providers = [
 
 ## Registering middleware
 
-Register the following middleware inside `start/kernel.js` file.
+Register the following middleware inside `start/kernel.js` file. Place the bugsnag middleware after the 'Adonis/Middleware/AuthInit' middleware
 
 ```js
-const serverMiddleware = [
-  'Adonis/Middleware/Static',
+const globalMiddleware = [
   ...
+  'Adonis/Middleware/AuthInit',
   'Adonis/Middleware/BugSnagUser'
 ]
 ```
