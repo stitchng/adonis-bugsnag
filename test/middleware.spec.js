@@ -10,8 +10,10 @@
 */
 
 const test = require('japa')
+const path = require('path')
 const { Config, Env, Helpers  } = require('@adonisjs/sink')
 const { ioc } = require('@adonisjs/fold')
+const NotifierStub = require('./setup/notifier-stub.js')
 const BugSnagMiddleware = require('../src/BugSnag/Middleware/BugSnagUser.js')
 const BugSnag = require('../src/BugSnag/index.js')
 
@@ -20,16 +22,19 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
     ioc.singleton('Adonis/Src/Config', () => {
       let config = new Config()
       config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-      config.set('bugsnag.trackSession', false)
+      config.set('bugsnag.trackViaSession', false)
       return config
     })
 
     ioc.singleton('Adonis/Src/Env', () => {
       let env = new Env()
+      env.set('NODE_ENV', 'development')
+      return env
     })
 
     ioc.singleton('Adonis/Src/Helpers', () => {
-      let helper = new Helpers('..')
+      let helpers = new Helpers(path.join(__dirname, '..'))
+      return helpers
     })
     
   })
@@ -51,15 +56,19 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
     }
 
     const context = { request, auth, session }
-    const middleware = new BugSnagMiddleware(new BugSnag())
+    const bugsnag = new BugSnag(NotifierStub, ioc.use('Adonis/Src/Config'), ioc.use('Adonis/Src/Helpers'), ioc.use('Adonis/Src/Env'))
+    const middleware = new BugSnagMiddleware(bugsnag)
 
     middleware
       .handle(context, async function () {
         return true
       })
       .then(() => {
-        assert.isTrue(!!BugSnag.notifier.user)
-        assert.equal(request.user.id, 1)
+        assert.isTrue(!!bugsnag.notifier.user)
+        assert.isTrue(!!bugsnag.notifier.context)
+        assert.isTrue(!!bugsnag.notifier.context.session)
+        assert.deepEqual(bugsnag.notifier.context.cookies, {_gd1:'opened'})
+        assert.equal(bugsnag.notifier.user.id, 1)
       })
   })
 })
