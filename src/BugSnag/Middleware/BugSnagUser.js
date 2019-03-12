@@ -1,8 +1,8 @@
 'use strict'
 
 class BugSnagUser {
-  constructor (Config) {
-    this.appSecret = Config.get('app.appKey')
+  constructor (bugsnag) {
+    this.notifierWrapper = bugsnag
   }
 
   async handle ({ request, auth }, next) {
@@ -10,7 +10,8 @@ class BugSnagUser {
     try{
       let _user = await (typeof (auth.getUser) === 'function' ? auth.getUser() : Promise.resolve(null))
 
-      request.user = _user
+      this.notifierWrapper.notifierWrapper.setAuthUser(_user)
+      this.notifierWrapper.setContext()
     }catch(err){
       ;
     }
