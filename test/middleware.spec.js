@@ -10,19 +10,38 @@
 */
 
 const test = require('japa')
-const { Config, setupResolver } = require('@adonisjs/sink')
-// const { resolver } = require('@adonisjs/fold')
+const { Config, Env, Helpers  } = require('@adonisjs/sink')
+const { ioc } = require('@adonisjs/fold')
 const BugSnagMiddleware = require('../src/BugSnag/Middleware/BugSnagUser.js')
+const BugSnag = require('../src/BugSnag/index.js')
 
 test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
   group.before(() => {
-    setupResolver()
+    ioc.singleton('Adonis/Src/Config', () => {
+      let config = new Config()
+      config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      config.set('bugsnag.trackSession', false)
+      return config
+    })
+
+    ioc.singleton('Adonis/Src/Env', () => {
+      let env = new Env()
+    })
+
+    ioc.singleton('Adonis/Src/Helpers', () => {
+      let helper = new Helpers('..')
+    })
+    
   })
 
   test('setup the request user upon handling', async (assert) => {
     const request = {
       url: () => 'https://127.0.0.1:333/dashboard/user',
-      cookie: () => {}
+      cookies: () => {_gd1:'opened'}
+    }
+    
+    const session = {
+      all: () => {adonis_auth:'1'}
     }
 
     const auth = {
@@ -31,15 +50,15 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
       }
     }
 
-    const context = { request, auth }
-    const middleware = new BugSnagMiddleware(new Config())
+    const context = { request, auth, session }
+    const middleware = new BugSnagMiddleware(new BugSnag())
 
     middleware
       .handle(context, async function () {
         return true
       })
       .then(() => {
-        assert.isTrue(!!request.user)
+        assert.isTrue(!!BugSnag.notifier.user)
         assert.equal(request.user.id, 1)
       })
   })
