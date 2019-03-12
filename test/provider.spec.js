@@ -21,18 +21,18 @@ test.group('AdonisJS BugSnag Provider Test(s)', (group) => {
   group.before(() => {
     ioc.singleton('Adonis/Src/Config', () => {
       let config = new Config()
-      config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
       config.set('bugsnag.trackViaSession', false)
       return config
     })
 
-    ioc.singleton('Adonis/Src/Env', () => {
+    ioc.singleton('Env', () => {
       let env = new Env()
       env.set('NODE_ENV', 'development')
       return env
     })
 
-    ioc.singleton('Adonis/Src/Helpers', () => {
+    ioc.singleton('Helpers', () => {
       let helpers = new Helpers(path.join(__dirname, '..'))
       return helpers
     })

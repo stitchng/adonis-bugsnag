@@ -21,7 +21,7 @@ test.group('AdonisJS BugSnag Middleware Test(s)', (group) => {
   group.before(() => {
     ioc.singleton('Adonis/Src/Config', () => {
       let config = new Config()
-      config.set('bugsnag.apiKey', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      config.set('bugsnag.apiKey', 'q24cd5317608c5353de0794576ee015q')
       config.set('bugsnag.trackViaSession', false)
       return config
     })
