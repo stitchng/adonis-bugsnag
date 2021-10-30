@@ -11,13 +11,15 @@ class BugSnagUser {
 
       this.notifierWrapper.setAuthUser(_user)
       this.notifierWrapper.setContext(request, session)
-    } catch (err) {
+    } catch {
       ;
     }
 
-    await next()
-
-    // this.notifierWrapper.leaveBreadcrumb('"name"', '{metaData}', '"type"', 'timestamp')
+    try {
+      await next()
+    } catch (error) {
+      this.notifierWrapper.notify(error, request)
+    }
   }
 }
 

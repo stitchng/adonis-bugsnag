@@ -36,6 +36,10 @@ class BugSnagAPIClient {
     this.notifier.metaData = metaData
   }
 
+  setRuntimeDebugTrail (runtimeProcessName = '', runtimeProcessData = {}, runtimeProcessDataType = '') {
+    this.notifier.leaveBreadcrumb(runtimeProcessName, runtimeProcessData, runtimeProcessDataType, Date.now())
+  }
+
   setDevice (device = {}) {
     this.notifier.device = device
   }
@@ -47,10 +51,10 @@ class BugSnagAPIClient {
 
     this.notifier.notify(error, {
       beforeSend: function (report) {
-        // Filter out sensitive information
+        /* @HINT: Filter out sensitive information */
         report.request.url = request.url() || '[REDACTED]'
 
-        // Add additional diagnostic information
+        /* @HINT: Add additional diagnostic information */
         if (extraMetaData) {
           // report.removeMetaData('extra', '')
           report.updateMetaData('extra', extraMetaData)
