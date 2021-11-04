@@ -1,8 +1,9 @@
 <a name="0.2.1"></a>
-# 0.2.1 (2021-11-02)
+# 0.2.1 (2021-11-05)
 
 - Fixed [Issue #6](https://github.com/stitchng/adonis-bugsnag/issues/6) raised by [@Keenotteson](https://github.com/Keanottesen)
 - Added method for bugsnag breadcrumbs: `bugsnag.setRuntimeDebugTrail()`
+- Added method for bugsnag breadcrumbs: `bugsnag.setRuntimeInfoTrail()`
 
 <a name="0.2.0"></a>
 # 0.2.0 (2019-03-12)

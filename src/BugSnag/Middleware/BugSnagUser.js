@@ -11,7 +11,7 @@ class BugSnagUser {
 
       this.notifierWrapper.setAuthUser(_user)
       this.notifierWrapper.setContext(request, session)
-    } catch {
+    } catch (_) {
       ;
     }
 

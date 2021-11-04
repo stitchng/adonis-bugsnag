@@ -36,8 +36,34 @@ class BugSnagAPIClient {
     this.notifier.metaData = metaData
   }
 
-  setRuntimeDebugTrail (runtimeProcessName = '', runtimeProcessData = {}, runtimeProcessDataType = '') {
-    this.notifier.leaveBreadcrumb(runtimeProcessName, runtimeProcessData, runtimeProcessDataType, Date.now())
+  addExtraMetaData (extraMetaData) {
+    this.notifier.$extraMetaData = extraMetaData
+  }
+
+  setRuntimeDebugTrail (runtimeProcessName = '', runtimeProcessData = '{}') {
+    if (typeof this.notifier.leaveBreadcrumb === 'function') {
+      this.notifier.leaveBreadcrumb(
+        runtimeProcessName,
+        runtimeProcessData,
+        'state',
+        Date.now()
+      )
+      return true
+    }
+    return false
+  }
+
+  setRuntimeInfoTrail (runtimeProcessName = '', runtimeProcessData = '{}', suffix = '') {
+    if (typeof this.notifier.leaveBreadcrumb === 'function') {
+      this.notifier.leaveBreadcrumb(
+        runtimeProcessName,
+        runtimeProcessData,
+        'process' + suffix,
+        Date.now()
+      )
+      return true
+    }
+    return false
   }
 
   setDevice (device = {}) {
@@ -49,15 +75,16 @@ class BugSnagAPIClient {
       this.addMetaData(metaData)
     }
 
+    const extras = extraMetaData || this.notifier.$extraMetaData || null
+
     this.notifier.notify(error, {
       beforeSend: function (report) {
         /* @HINT: Filter out sensitive information */
         report.request.url = request.url() || '[REDACTED]'
 
         /* @HINT: Add additional diagnostic information */
-        if (extraMetaData) {
-          // report.removeMetaData('extra', '')
-          report.updateMetaData('extra', extraMetaData)
+        if (extras) {
+          report.updateMetaData('extra', extras)
         }
       }
     })
