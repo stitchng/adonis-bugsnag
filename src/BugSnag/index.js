@@ -36,6 +36,36 @@ class BugSnagAPIClient {
     this.notifier.metaData = metaData
   }
 
+  addExtraMetaData (extraMetaData) {
+    this.notifier.$extraMetaData = extraMetaData
+  }
+
+  setRuntimeDebugTrail (runtimeProcessName = '', runtimeProcessData = '{}') {
+    if (typeof this.notifier.leaveBreadcrumb === 'function') {
+      this.notifier.leaveBreadcrumb(
+        runtimeProcessName,
+        runtimeProcessData,
+        'state',
+        Date.now()
+      )
+      return true
+    }
+    return false
+  }
+
+  setRuntimeInfoTrail (runtimeProcessName = '', runtimeProcessData = '{}', suffix = '') {
+    if (typeof this.notifier.leaveBreadcrumb === 'function') {
+      this.notifier.leaveBreadcrumb(
+        runtimeProcessName,
+        runtimeProcessData,
+        'process' + suffix,
+        Date.now()
+      )
+      return true
+    }
+    return false
+  }
+
   setDevice (device = {}) {
     this.notifier.device = device
   }
@@ -45,15 +75,16 @@ class BugSnagAPIClient {
       this.addMetaData(metaData)
     }
 
+    const extras = extraMetaData || this.notifier.$extraMetaData || null
+
     this.notifier.notify(error, {
       beforeSend: function (report) {
-        // Filter out sensitive information
+        /* @HINT: Filter out sensitive information */
         report.request.url = request.url() || '[REDACTED]'
 
-        // Add additional diagnostic information
-        if (extraMetaData) {
-          // report.removeMetaData('extra', '')
-          report.updateMetaData('extra', extraMetaData)
+        /* @HINT: Add additional diagnostic information */
+        if (extras) {
+          report.updateMetaData('extra', extras)
         }
       }
     })
