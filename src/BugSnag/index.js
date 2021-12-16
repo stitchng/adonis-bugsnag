@@ -26,9 +26,9 @@ class BugSnagAPIClient {
 
   setContext (request = {}, session = {}) {
     this.notifier.context = {
-      route: typeof request.currentRoute === 'function' ? request.currentRoute() : {},
-      cookies: typeof request.cookies === 'function' ? request.cookies() : {},
-      session: typeof session.all === 'function' ? session.all() : {}
+      route: request.currentRoute().name || '',
+      cookies: request.cookies(),
+      session: session && typeof session.all === 'function' ? session.all() : {}
     }
   }
 
